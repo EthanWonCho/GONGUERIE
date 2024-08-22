@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>GONGUERIE | 공지사항</title>
+</head>
+<body>
+  <div class="header boxed">
+    <div class="headerItem logo">
+      <a href="/">
+        <img src="/images/logo.svg" alt="GONGUERIE">
+      </a>
+    </div>
+    <ul class="headerItem topUtil">
+      <li><a href="/">홈</a></li>
+      <li><a href="/">로그인</a></li>
+      <li><a href="/">회원가입</a></li>
+      <li><a href="/sitemap">사이트맵</a></li>
+    </ul>
+  </div>
+  <div class="banner">
+    <ul class="boxed">
+      <li>학교소개</li>
+      <li><a href="/announcements">알림마당</a></li>
+      <li><%=title%></li>
+      <li>that</li>
+      <li>I</li>
+      <li>would</li>
+      <li>not</li>
+      <li>remember</li>
+      <li>you?</li>
+    </ul>
+  </div>
+  <div class="container boxed">
+    <div class="postList">
+      <table>
+        <colgroup>
+          <col style="width:10%;" class="BD_tm_none">
+          <col style="width:auto;">
+          <col style="width:15%;">
+          <col style="width:12%;">
+          <col style="width:10%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col" class="BD_tm_none">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>
+            <th scope="col">등록일</th>
+            <th scope="col">조회수</th>
+          </tr>
+        </thead>
+        <tr>
+          <td class="BD_tm_none"><%=n%></td>
+          <td class="textLeftAlign">
+            <a href="/viewpost?postid=<%=n%>">
+              <%=title%>
+            </a>
+          </td>
+          <td>
+            <%=author%>
+          </td>
+          <td>
+            <%=written_date%>
+          </td>
+          <td>
+            <%=view_count%>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

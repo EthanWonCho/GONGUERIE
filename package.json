@@ -1,0 +1,20 @@
+{
+  "name": "gonguerie",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node ./bin/www",
+    "start": "node ./bin/www"
+  },
+  "author": "Ethan Cho",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "http-errors": "^2.0.0",
+    "jade": "^0.29.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.11.0"
+  }
+}

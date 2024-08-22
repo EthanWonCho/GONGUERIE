@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>GONGUERIE</title>
+</head>
+<body>
+  <div class="header boxed">
+    <div class="headerItem logo">
+      <a href="/">
+        <img src="/images/logo.svg" alt="GONGUERIE">
+      </a>
+    </div>
+    <ul class="headerItem topUtil">
+      <li><a href="/">홈</a></li>
+      <li><a href="/">로그인</a></li>
+      <li><a href="/">회원가입</a></li>
+      <li><a href="/sitemap">사이트맵</a></li>
+    </ul>
+  </div>
+  <div class="banner">
+    <ul class="boxed">
+      <li>학교소개</li>
+      <li><a href="/announcements">알림마당</a></li>
+      <li>think</li>
+      <li>that</li>
+      <li>I</li>
+      <li>would</li>
+      <li>not</li>
+      <li>remember</li>
+      <li>you?</li>
+    </ul>
+  </div>
+  <div class="container boxed">
+    <div class="viewpost">
+      <div class="postTitle">
+        <%=title%>
+      </div>
+      <div class="postInfo">
+        <div class="postAuthor">
+          Author
+          <%=author%>
+        </div>
+        <div class="postInfoDiv"></div>
+        <div class="writtendate">
+          Date
+          <%=written_date%>
+        </div>
+        <div class="postInfoDiv"></div>
+        <div class="viewcount">
+          <%=view_count%> 
+          views
+        </div>
+      </div>
+      <div class="postContent">
+        <%=contents%>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

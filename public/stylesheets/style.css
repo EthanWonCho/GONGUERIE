@@ -1,0 +1,106 @@
+/* global */
+
+body {
+  background-color: #F4F4F4;
+  font: 15px "Open Sans", Arial, sans-serif;
+  margin-top: 0px;
+}
+
+.boxed {
+  margin: auto 100px;
+}
+
+.textLeftAlign {
+  text-align: left !important;
+}
+
+/* header */
+
+.header {
+  display: flex;
+  flex-direction: row;
+  flex: 3 1;
+  align-items: center;
+}
+
+.headerItem {
+  flex-grow: 1;
+}
+
+.topUtil{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.topUtil > * {
+  flex-grow: 1;
+}
+
+/* banner */
+
+.banner {
+  border-top: solid #666C75;
+  padding: 15px 0px;
+}
+
+.banner > ul{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.banner > ul > li {
+  flex-grow: 1;
+}
+
+/* container */
+
+.container {
+
+}
+
+/* postlist */
+
+.postList > table {
+  width: 100%;
+  border: solid;
+}
+
+.postList > table > tbody > tr > td {
+  text-align: center;
+}
+
+/* viewpost */
+
+.viewpost {
+  border-top: solid #0072FF;
+  text-align: center;
+}
+.postTitle {
+  padding: 13px 0px;
+  font-size: 1.3rem;
+}
+
+.postInfo {
+  background-color: #d8d8d8;
+  padding: 10px 0px;
+  border-top: solid #c1c1c1 1px;
+  border-bottom: solid #c1c1c1 1px;
+}
+.postInfo > div {
+  position: relative;
+  display: inline-block;
+  margin: 0px 10px;
+}
+.postInfoDiv {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 10px;
+  background: #0072FF;
+}
+
+.postContent {
+  margin-top: 1rem;
+}
