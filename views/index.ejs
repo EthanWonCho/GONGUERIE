@@ -13,7 +13,26 @@
       <img src="/images/olympics.jpeg" alt="olympics">
     </div>
     <div class="boardPreview">
-      hello
+      <div class="postList noBorder">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">제목</th>
+              <th scope="col">등록일</th>
+            </tr>
+          </thead>
+          <tr>
+            <td class="textLeftAlign">
+              <a href="/viewpost?postid=<%=n%>">
+                <%=title%>
+              </a>
+            </td>
+            <td>
+              <%= written_date %>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </body>

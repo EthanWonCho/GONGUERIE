@@ -68,6 +68,10 @@ img {
   width: 50em;
 }
 
+.noBorder > table {
+  border: none !important;
+}
+
 /* postlist */
 
 .postList > table {
