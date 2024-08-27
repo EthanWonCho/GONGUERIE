@@ -7,9 +7,8 @@ const helper = require('../helper');
 router.get('/', function(req, res, next) {
   var cmd = "select * from announcements";
   conn.query(cmd, function(err, result) {
-    if(err) {
-      console.log("query error: " + err);
-      res.send(NULL);
+    if(result.length == 0) {
+      res.redirect('/404');
     } else {
       // res.send(result);
       res.render('announcements', {res: result, helper: helper});
