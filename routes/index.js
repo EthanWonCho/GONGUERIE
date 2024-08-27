@@ -12,8 +12,7 @@ router.get('/', function(req, res, next) {
       res.send(NULL);
     } else {
       // res.send(result);
-      result[0].written_date = helper.formatDate(result[0].written_date);
-      res.render('index', result[0])
+      res.render('index', {res: result, helper: helper});
     }
   });
 });

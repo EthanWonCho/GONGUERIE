@@ -27,23 +27,26 @@
             <th scope="col">조회수</th>
           </tr>
         </thead>
-        <tr>
-          <td class="BD_tm_none"><%=n%></td>
-          <td class="textLeftAlign">
-            <a href="/viewpost?postid=<%=n%>">
-              <%=title%>
-            </a>
-          </td>
-          <td>
-            <%=author%>
-          </td>
-          <td>
-            <%=written_date%>
-          </td>
-          <td>
-            <%=view_count%>
-          </td>
-        </tr>
+        <% res.forEach(data => { %>
+          <tr>
+            <td class="BD_tm_none"><%=data.n%></td>
+            <td class="textLeftAlign">
+              <a href="/viewpost?postid=<%=data.n%>">
+                <%=data.title%>
+              </a>
+            </td>
+            <td>
+              <%=data.author%>
+            </td>
+            <td>
+              <% data.written_date = helper.formatDate(data.written_date); %>
+              <%=data.written_date%>
+            </td>
+            <td>
+              <%=data.view_count%>
+            </td>
+          </tr>
+        <% }); %>
       </table>
     </div>
   </div>

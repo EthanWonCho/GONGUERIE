@@ -21,16 +21,19 @@
               <th scope="col">등록일</th>
             </tr>
           </thead>
-          <tr>
-            <td class="textLeftAlign">
-              <a href="/viewpost?postid=<%=n%>">
-                <%=title%>
-              </a>
-            </td>
-            <td>
-              <%= written_date %>
-            </td>
-          </tr>
+          <% res.forEach(data => { %>
+            <tr>
+              <td class="textLeftAlign">
+                <a href="/viewpost?postid=<%=data.n%>">
+                  <%=data.title%>
+                </a>
+              </td>
+              <td>
+                <% data.written_date = helper.formatDate(data.written_date) %>
+                <%=data.written_date%>
+              </td>
+            </tr>
+          <% }); %>
         </table>
       </div>
     </div>
