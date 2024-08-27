@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var announcementsRouter = require('./routes/announcements');
 var viewPostRouter = require('./routes/viewpost');
+var notFoundRouter = require('./routes/404');
 
 var app = express();
 
@@ -23,10 +24,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
 app.use('/viewpost', viewPostRouter);
+app.use('/404', notFoundRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  res.redirect('404');
 });
 
 // error handler
