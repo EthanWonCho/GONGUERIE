@@ -58,9 +58,9 @@ img {
   flex-grow: 1;
 }
 
-/* container */
+/* index */
 
-.container {
+.index {
   display: flex;
 }
 
