@@ -14,6 +14,10 @@ body {
   text-align: left !important;
 }
 
+img {
+  width: inherit;
+}
+
 /* header */
 
 .header {
@@ -57,7 +61,11 @@ body {
 /* container */
 
 .container {
+  display: flex;
+}
 
+.mainImageContainer {
+  width: 50em;
 }
 
 /* postlist */
