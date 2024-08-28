@@ -72,6 +72,18 @@ img {
   border: none !important;
 }
 
+/* writeButton */
+
+.writeButtonWrapper {
+  margin: 10px 0;
+}
+
+.writeButton {
+  width: 110px;
+  height: 30px;
+  border-radius: 1em;
+}
+
 /* postlist */
 
 .postList > table {
