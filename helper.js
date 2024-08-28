@@ -4,4 +4,4 @@ function formatDate(date) {
   return moment(date).format('MMMM D YYYY');
 }
 
-module.exports = { formatDate };
+module.exports = {formatDate};

@@ -8,7 +8,6 @@ var indexRouter = require('./routes/index');
 var announcementsRouter = require('./routes/announcements');
 var viewPostRouter = require('./routes/viewpost');
 var writePostRouter = require('./routes/writepost');
-var notFoundRouter = require('./routes/404');
 
 var app = express();
 
@@ -26,22 +25,26 @@ app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
 app.use('/viewpost', viewPostRouter);
 app.use('/writepost', writePostRouter);
-app.use('/404', notFoundRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  res.redirect('404');
+  next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  if(err.status == 404) {
+    res.status(404);
+    res.render("404");
+  } else {
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+  }
 });
 
 module.exports = app;
