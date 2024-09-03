@@ -1,0 +1,4 @@
+.writeItem {
+  display: flex;
+  flex-direction: column;
+}
