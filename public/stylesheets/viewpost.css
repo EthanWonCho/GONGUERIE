@@ -1,0 +1,38 @@
+.viewpost {
+  border-top: solid #0072FF;
+  text-align: center;
+}
+.postTitle {
+  padding: 13px 0px;
+  font-size: 1.3rem;
+}
+
+.postInfo {
+  background-color: #d8d8d8;
+  padding: 10px 0px;
+  border-top: solid #c1c1c1 1px;
+  border-bottom: solid #c1c1c1 1px;
+}
+.postInfo > div {
+  position: relative;
+  display: inline-block;
+  margin: 0px 10px;
+}
+.postInfoDiv {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 10px;
+  background: #0072FF;
+}
+
+.postContent {
+  padding: 1rem;
+  border-bottom: solid #c1c1c1 1px;
+}
+
+.aftPostMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

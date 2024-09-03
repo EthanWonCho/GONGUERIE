@@ -1,0 +1,11 @@
+.index {
+  display: flex;
+}
+
+.mainImageContainer {
+  width: 50em;
+}
+
+.noBorder > table {
+  border: none !important;
+}

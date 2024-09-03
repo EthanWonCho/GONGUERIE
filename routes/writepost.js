@@ -6,10 +6,8 @@ var conn = db.init();
 const helper = require('../helper');
 
 router.get('/', function(req, res, next) {
-  var cmd = "select * from announcements";
-  conn.query(cmd, function(err, result) {
-    res.render('index', {res: result, helper: helper});
-  });
+  res.render("writepost");
 });
 
 module.exports = router;
+ 

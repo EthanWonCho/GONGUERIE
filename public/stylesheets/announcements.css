@@ -1,0 +1,10 @@
+/* postlist */
+
+.postList > table {
+  width: 100%;
+  border: solid;
+}
+
+.postList > table > tbody > tr > td {
+  text-align: center;
+}

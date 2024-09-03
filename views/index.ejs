@@ -3,14 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/global.css">
+  <link rel="stylesheet" href="/stylesheets/index.css">
   <title>GONGUERIE</title>
 </head>
 <body>
   <%- include("header") %>
-  <div class="container">
+  <div class="index">
     <div class="mainImageContainer">
-      <img src="/images/olympics.jpeg" alt="olympics" style="width: 100%;">
+      <img src="/images/olympics.jpeg" alt="olympics">
+    </div>
+    <div class="boardPreview">
+      <div class="postList noBorder">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">제목</th>
+              <th scope="col">등록일</th>
+            </tr>
+          </thead>
+          <% res.forEach(data => { %>
+            <tr>
+              <td class="textLeftAlign">
+                <a href="/viewpost?postid=<%=data.n%>">
+                  <%=data.title%>
+                </a>
+              </td>
+              <td>
+                <% data.written_date = helper.formatDate(data.written_date) %>
+                <%=data.written_date%>
+              </td>
+            </tr>
+          <% }); %>
+        </table>
+      </div>
     </div>
   </div>
 </body>
