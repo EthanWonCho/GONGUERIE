@@ -5,7 +5,7 @@ async function postSubmit() {
     title: titleText,
     content: contentText
   };
-  const response = await fetch('/write', {
+  const response = await fetch('/writepost', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json; charset=utf-8'
