@@ -37,7 +37,7 @@ router.delete('/', function(req, res, next) {
       }
     });
   } else {
-    res.redirect("/announcements");
+    next(createError(410));
   }
 });
 
