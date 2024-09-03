@@ -27,5 +27,12 @@
 }
 
 .postContent {
-  margin-top: 1rem;
+  padding: 1rem;
+  border-bottom: solid #c1c1c1 1px;
+}
+
+.aftPostMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

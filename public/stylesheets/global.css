@@ -55,3 +55,15 @@ img {
 .banner > ul > li {
   flex-grow: 1;
 }
+
+/* Button TODO */
+
+.writeButtonWrapper {
+  margin: 10px 0;
+}
+
+.writeButton {
+  width: 70px;
+  height: 30px;
+  border-radius: 1em;
+}

@@ -23,5 +23,23 @@ router.get('/', function(req, res, next) {
   }
 });
 
+router.delete('/', function(req, res, next) {
+  if(req.query.postid) {
+    const postid = req.query.postid;
+    var cmd = "DELETE FROM announcements WHERE n = " + postid;
+    conn.query(cmd, function(err, result) {
+      // res.send(result);
+      if(result.length == 0) {
+        console.error('Query Error: ', err);
+        next(createError(503));
+      } else {
+        res.status(200).send();
+      }
+    });
+  } else {
+    res.redirect("/announcements");
+  }
+});
+
 module.exports = router;
  

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/global.css">
   <link rel="stylesheet" href="/stylesheets/viewpost.css">
+  <script src="/javascripts/viewpost.js"></script>
   <title>GONGUERIE</title>
 </head>
 <body>
@@ -32,6 +33,14 @@
       </div>
       <div class="postContent">
         <%=contents%>
+      </div>
+    </div>
+    <div class="aftPostMenu">
+      <div class="postList">
+        <a href="/announcements"><button>목록</button></a>
+      </div>
+      <div class="deletePost">
+        <button onclick="deletePost( <%=n%> );">삭제</button>
       </div>
     </div>
   </div>
