@@ -79,7 +79,7 @@ img {
 }
 
 .writeButton {
-  width: 110px;
+  width: 70px;
   height: 30px;
   border-radius: 1em;
 }
@@ -127,4 +127,10 @@ img {
 
 .postContent {
   margin-top: 1rem;
+}
+
+/* writeItem */
+.writeItem {
+  display: flex;
+  flex-direction: column;
 }

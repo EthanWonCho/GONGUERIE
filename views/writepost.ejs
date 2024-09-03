@@ -4,12 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/javascripts/writepost.js"></script>
   <title>GONGUERIE</title>
 </head>
 <body>
   <%- include("header") %>
   <div class="boxed">
-    
+    <div class="writeTitle">
+      <h1>게시물 작성하기</h1>
+    </div>
+    <div class="writeItem">
+      <input type="text" id="postTitleInput" placeholder="제목">
+      <textarea id="postContentInput"></textarea>
+      <button id="postSubmitButton" onclick="postSubmit();">Submit</button>
+    </div>
   </div>
 </body>
 </html>
