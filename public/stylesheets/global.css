@@ -21,6 +21,9 @@ img {
 
 /* header */
 
+.logo {
+  width: 100px;
+}
 .header {
   display: flex;
   flex-direction: row;
