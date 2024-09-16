@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var announcementsRouter = require('./routes/announcements');
@@ -27,7 +28,7 @@ app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
 app.use('/viewpost', viewPostRouter);
 app.use('/writepost', writePostRouter);
-app.use('/signin', signInRouter);
+// app.use('/signin', signInRouter);
 app.use('/signup', signUpRouter);
 
 // catch 404 and forward to error handler
@@ -38,11 +39,19 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  let status = err.status || 500;
-  let fault = req.app.get('env') === 'development' ? err : {};
-  // render the error page
-  res.status(status);
-  res.render('error', {status:status, error: fault});
+  let s = err.status || 500;
+  let customerErrorlist = {
+    404: "We couldn't find the page you were looking for.",
+    500: "We have an internal server error."
+  };
+  
+  if(req.app.get('env') === 'development') {
+    res.status(s).render('error', { status: s, error: err });
+  } else {
+    // Access the custom error message dynamically using brackets
+    let errorMessage = customerErrorlist[s] || "An unexpected error occurred.";
+    res.status(s).render('error', { status: s, error: errorMessage });
+  }
 });
 
 module.exports = app;
