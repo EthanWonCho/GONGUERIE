@@ -26,7 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSession({
   secret: "my key",
   resave: true,
-  saveUninitialized: true,
+  saveUninitialized: false,
+  // https://dev.to/m__mdy__m/understanding-cookies-and-sessions-in-nodejs-3449
+  // saveUninitialized should be false until the user Allows to
 }));
 
 app.use('/', indexRouter);
@@ -42,6 +44,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
+// TODO: process.env.NODE_ENV === 'development'
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   if(err.status == 404) {
