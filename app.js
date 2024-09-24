@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
@@ -22,6 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(expressSession({
+  secret: "my key",
+  resave: true,
+  saveUninitialized: false,
+  // https://dev.to/m__mdy__m/understanding-cookies-and-sessions-in-nodejs-3449
+  // saveUninitialized should be false until the user Allows to
+}));
 
 app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
@@ -48,6 +56,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
+// TODO: process.env.NODE_ENV === 'development'
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   let s = err.status || 500;

@@ -6,7 +6,7 @@ async function register() {
     id: idText,
     pw: pwText
   };
-  const response = await fetch('/signup', {
+  const response = await fetch('/signin', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json; charset=utf-8'
