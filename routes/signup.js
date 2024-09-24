@@ -10,8 +10,9 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res, next) {
-  var cmd = 'INSERT INTO user (id, pw) VALUES ("' + req.body.id + '", "' + req.body.pw + '");';
-  conn.query(cmd, function(err, result) {
+  var cmd = 'INSERT INTO user (id, pw) VALUES ( ? , ? );';
+  params = [req.body.id, req.body.pw];
+  conn.query(cmd, params, function(err, result) {
     if(err) {
       console.error('Query Error: ', err);
       next(createError(400));
