@@ -56,12 +56,11 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-// TODO: process.env.NODE_ENV === 'development'
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   let s = err.status || 500;
   
-  if(req.app.get('env') === 'development') {
+  if(process.env.NODE_ENV === 'development') {
     res.status(s).render('error', { status: s, error: err });
   } else {
     // redirect to the error page to render client error message
