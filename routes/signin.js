@@ -30,12 +30,11 @@ router.post('/', function(req, res, next) {
         if (result) {
           // Passwords match, authentication successful
           console.log('Passwords match! User authenticated.');
-          // res.redirect("/");
           res.status(200).send();
-          // req.session.user = {
-          //   id: req.body.id,
-          //   authorized: true,
-          // };
+          req.session.user = {
+            id: req.body.id,
+            authorized: true,
+          };
         } else {
           // Passwords don't match, authentication failed
           console.log('Passwords do not match! Authentication failed.');

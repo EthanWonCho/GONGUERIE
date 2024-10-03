@@ -35,9 +35,9 @@ app.use('/', indexRouter);
 app.use('/announcements', announcementsRouter);
 app.use('/viewpost', viewPostRouter);
 app.use('/writepost', writePostRouter);
-// app.use('/signin', signInRouter);
+app.use('/signin', signInRouter);
 app.use('/signup', signUpRouter);
-app.use('/error', function(req, res, next) {
+app.use('/error', function(req, res) {
   let s = Number(req.query.errorcode) || 418;
   let clientErrorMessage = {
     404: "We couldn't find the page you were looking for.",
