@@ -8,8 +8,8 @@ const helper = require('../helper');
 router.get('/', function(req, res, next) {
   var cmd = "select * from announcements";
   conn.query(cmd, function(err, result) {
-    if(result.length == 0) {
-      next(createError(404));
+    if(result.length == 0 || err) {
+      next(createError(500));
     } else {
       // res.send(result);
       res.render('announcements', {res: result, helper: helper});

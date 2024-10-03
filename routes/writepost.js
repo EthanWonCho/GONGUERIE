@@ -15,9 +15,9 @@ router.post('/', function(req, res, next) {
   conn.query(cmd, params, function(err, result) {
     if(err) {
       console.error('Query Error: ', err);
-      next(createError(503));
+      next(createError(500));
     } else {
-      res.status(200).send({id: result.insertId});
+      res.status(201).send({id: result.insertId});
     }
   });
 });

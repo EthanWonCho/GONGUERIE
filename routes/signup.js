@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
     conn.query(cmd, params, function(err, result) {
       if(err) {
         console.error('Query Error: ', err);
-        next(createError(400));
+        next(createError(500));
       } else {
         req.session.user = {
           id: req.body.id,

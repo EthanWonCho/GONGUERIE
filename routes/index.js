@@ -8,7 +8,12 @@ const helper = require('../helper');
 router.get('/', function(req, res) {
   var cmd = "select * from announcements";
   conn.query(cmd, function(err, result) {
-    res.render('index', {res: result, helper: helper});
+    if(err) {
+      console.error('Query Error: ', err);
+      next(createError(500));
+    } else {
+      res.render('index', {res: result, helper: helper});
+    }
   });
 });
 

@@ -24,7 +24,7 @@ router.post('/', function(req, res, next) {
         if (err) {
           // Handle error
           console.error('Error comparing passwords:', err);
-          next(createError(503));
+          next(createError(500));
           return;
         }
         if (result) {
@@ -38,7 +38,7 @@ router.post('/', function(req, res, next) {
         } else {
           // Passwords don't match, authentication failed
           console.log('Passwords do not match! Authentication failed.');
-          res.status(400).send();
+          res.status(401).send();
         }
       });
     }

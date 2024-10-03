@@ -10,8 +10,8 @@ router.get('/', function(req, res, next) {
     var cmd = "SELECT * FROM announcements WHERE n = ?";
     conn.query(cmd, [req.query.postid], function(err, result) {
       // res.send(result);
-      if(result.length == 0) {
-        next(createError(404));
+      if(result.length == 0 || err) {
+        next(createError(500));
       } else {
         result[0].written_date = helper.formatDate(result[0].written_date);
         res.render("viewpost", result[0]);
@@ -27,15 +27,15 @@ router.delete('/', function(req, res, next) {
     var cmd = "DELETE FROM announcements WHERE n = ?";
     conn.query(cmd, [req.query.postid], function(err, result) {
       // res.send(result);
-      if(result.length == 0) {
+      if(result.length == 0 || err) {
         console.error('Query Error: ', err);
-        next(createError(503));
+        next(createError(500));
       } else {
         res.status(200).send();
       }
     });
   } else {
-    next(createError(410));
+    next(createError(400)); //malformed request syntax
   }
 });
 
