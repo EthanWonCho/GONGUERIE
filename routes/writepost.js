@@ -10,8 +10,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  var cmd = 'INSERT INTO announcements (title, author, written_date, view_count, contents) VALUES ("' + req.body.title + '", "' + 'Unknown User' + '", now(), 0, "' + req.body.content + '");';
-  conn.query(cmd, function(err, result) {
+  var cmd = 'INSERT INTO announcements (title, author, written_date, view_count, contents) VALUES (?, ?, now(), 0, ?)';
+  var params = [req.body.title, 'Unknown User', req.body.content];
+  conn.query(cmd, params, function(err, result) {
     if(err) {
       console.error('Query Error: ', err);
       next(createError(503));

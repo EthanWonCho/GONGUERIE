@@ -7,9 +7,8 @@ const helper = require('../helper');
 
 router.get('/', function(req, res, next) {
   if(req.query.postid) {
-    const postid = req.query.postid;
-    var cmd = "SELECT * FROM announcements WHERE n = " + postid;
-    conn.query(cmd, function(err, result) {
+    var cmd = "SELECT * FROM announcements WHERE n = ?";
+    conn.query(cmd, [req.query.postid], function(err, result) {
       // res.send(result);
       if(result.length == 0) {
         next(createError(404));
@@ -25,9 +24,8 @@ router.get('/', function(req, res, next) {
 
 router.delete('/', function(req, res, next) {
   if(req.query.postid) {
-    const postid = req.query.postid;
-    var cmd = "DELETE FROM announcements WHERE n = " + postid;
-    conn.query(cmd, function(err, result) {
+    var cmd = "DELETE FROM announcements WHERE n = ?";
+    conn.query(cmd, [req.query.postid], function(err, result) {
       // res.send(result);
       if(result.length == 0) {
         console.error('Query Error: ', err);
