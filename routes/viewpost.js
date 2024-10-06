@@ -4,11 +4,13 @@ var router = express.Router();
 var db = require("../config/mysql");
 var conn = db.init();
 const helper = require('../helper');
+const dbMiddleware = require('../middlewares/dbMiddleware');
+router.use(dbMiddleware);
 
 router.get('/', function(req, res, next) {
   if(req.query.postid) {
     var cmd = "SELECT * FROM announcements WHERE n = ?";
-    conn.query(cmd, [req.query.postid], function(err, result) {
+    req.conn.query(cmd, [req.query.postid], function(err, result) {
       // res.send(result);
       if(result.length == 0 || err) {
         next(createError(500));
@@ -25,7 +27,7 @@ router.get('/', function(req, res, next) {
 router.delete('/', function(req, res, next) {
   if(req.query.postid) {
     var cmd = "DELETE FROM announcements WHERE n = ?";
-    conn.query(cmd, [req.query.postid], function(err, result) {
+    req.conn.query(cmd, [req.query.postid], function(err, result) {
       // res.send(result);
       if(result.length == 0 || err) {
         console.error('Query Error: ', err);

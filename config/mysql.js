@@ -1,11 +1,11 @@
 var mysql = require("mysql2");
 const { connect } = require("../routes");
 var db_info = {
-  host:"localhost",
-  post:"3306",
-  user:"nodeapp",
-  password:"laminarflow",
-  database:"gonguerie",
+  host:process.env.DB_HOST,
+  post:process.env.DB_POST,
+  user:process.env.DB_USER,
+  password:process.env.DB_PASSWORD,
+  database:process.env.DB_DATABASE,
 }
 
 module.exports = {

@@ -4,9 +4,8 @@ var router = express.Router();
 
 const helper = require('../helper');
 const bcrypt = require('bcrypt');
-
-var db = require("../config/mysql");
-var conn = db.init();
+const dbMiddleware = require('../middlewares/dbMiddleware');
+router.use(dbMiddleware);
 
 router.get('/', function(req, res) {
   res.render('signin');
@@ -15,7 +14,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res, next) {
   var cmd = 'SELECT pw from user where id = ?';
   params = [req.body.id];
-  conn.query(cmd, params, function(err, result) {
+  req.conn.query(cmd, params, function(err, result) {
     if(err) {
       console.error('Query Error: ', err);
       next(createError(400));

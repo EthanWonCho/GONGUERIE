@@ -4,9 +4,8 @@ var router = express.Router();
 
 const helper = require('../helper');
 const bcrypt = require('bcrypt');
-
-var db = require("../config/mysql");
-var conn = db.init();
+const dbMiddleware = require('../middlewares/dbMiddleware');
+router.use(dbMiddleware);
 
 router.get('/', function(req, res) {
   res.render('signup');
@@ -23,7 +22,7 @@ router.post('/', function(req, res, next) {
     // Hashing successful, 'hash' contains the hashed password
     var cmd = 'INSERT INTO user (id, pw) VALUES ( ? , ? );';
     params = [req.body.id, hash];
-    conn.query(cmd, params, function(err, result) {
+    req.conn.query(cmd, params, function(err, result) {
       if(err) {
         console.error('Query Error: ', err);
         next(createError(500));
