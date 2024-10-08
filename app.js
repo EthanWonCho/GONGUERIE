@@ -28,7 +28,8 @@ app.use(expressSession({
   resave: true,
   saveUninitialized: false,
   // https://dev.to/m__mdy__m/understanding-cookies-and-sessions-in-nodejs-3449
-  // saveUninitialized should be false until the user Allows to
+  // saveUninitialized should be false until the user allows to
+  cookie: { maxAge: 60000 }
 }));
 
 app.use('/', indexRouter);
@@ -43,6 +44,7 @@ app.use('/error', function(req, res) {
     404: "We couldn't find the page you were looking for.",
     418: "We have an unexpected error. (I became a teapot)",
     500: "We have an internal server error."
+    
   };
   
   // Access the custom error message dynamically using brackets
