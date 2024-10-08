@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSession({
-  secret: "my key",
+  secret: process.env.SESSION_SECRET || "defaultSecret",
   resave: true,
   saveUninitialized: false,
   // https://dev.to/m__mdy__m/understanding-cookies-and-sessions-in-nodejs-3449
