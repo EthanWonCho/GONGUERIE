@@ -9,17 +9,15 @@ router.get('/', function(req, res, next) {
   res.render("writepost");
 });
 
-router.post('/', function(req, res, next) {
-  var cmd = 'INSERT INTO announcements (title, author, written_date, view_count, contents) VALUES (?, ?, now(), 0, ?)';
-  var params = [req.body.title, 'Unknown User', req.body.content];
-  req.conn.query(cmd, params, function(err, result) {
-    if(err) {
-      console.error('Query Error: ', err);
-      next(createError(500));
-    } else {
-      res.status(201).send({id: result.insertId});
-    }
-  });
+router.post('/', async function(req, res, next) {
+  try {
+    var cmd = 'INSERT INTO announcements (title, author, written_date, view_count, contents) VALUES (?, ?, now(), 0, ?)';
+    await req.conn.query(cmd, [req.body.title, 'Unknown User', req.body.content]);
+    res.status(201).send({id: result.insertId});
+  } catch(err) {
+    console.error('Query Error: ', err);
+    next(createError(500));
+  }
 });
 
 module.exports = router;

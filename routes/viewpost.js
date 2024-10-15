@@ -7,37 +7,33 @@ const helper = require('../helper');
 const dbMiddleware = require('../middlewares/dbMiddleware');
 router.use(dbMiddleware);
 
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   if(req.query.postid) {
-    var cmd = "SELECT * FROM announcements WHERE n = ?";
-    req.conn.query(cmd, [req.query.postid], function(err, result) {
-      // res.send(result);
-      if(result.length == 0 || err) {
-        next(createError(500));
-      } else {
-        result[0].written_date = helper.formatDate(result[0].written_date);
-        res.render("viewpost", result[0]);
-      }
-    });
+    try {
+      var cmd = "SELECT * FROM announcements WHERE n = ?";
+      const result = await req.conn.query(cmd, [req.query.postid]);
+      result[0][0].written_date = helper.formatDate(result[0].written_date);
+      res.render("viewpost", result[0][0]);
+    } catch(err) {
+      next(createError(500));
+    }
   } else {
     res.redirect("/announcements");
   }
 });
 
-router.delete('/', function(req, res, next) {
+router.delete('/', async function(req, res, next) {
   if(req.query.postid) {
-    var cmd = "DELETE FROM announcements WHERE n = ?";
-    req.conn.query(cmd, [req.query.postid], function(err, result) {
-      // res.send(result);
-      if(result.length == 0 || err) {
-        console.error('Query Error: ', err);
-        next(createError(500));
-      } else {
-        res.status(200).send();
-      }
-    });
+    try {
+      var cmd = "DELETE FROM announcements WHERE n = ?";
+      await req.conn.query(cmd, [req.query.postid]);
+      res.status(200).send();
+    } catch(err) {
+      console.error('Query Error: ', err);
+      next(createError(500));
+    }
   } else {
-    next(createError(400)); //malformed request syntax
+    next(createError(400));  //malformed request syntax
   }
 });
 

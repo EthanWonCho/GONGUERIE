@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res, next) {
-  bcrypt.hash(req.body.pw, 10, (err, hash) => {
+  bcrypt.hash(req.body.pw, 10, async function(err, hash) {
     if (err) {
       // Handle error
       console.error('Hash Error: ', err);
@@ -20,20 +20,18 @@ router.post('/', function(req, res, next) {
       return;
     }
     // Hashing successful, 'hash' contains the hashed password
-    var cmd = 'INSERT INTO user (id, pw) VALUES ( ? , ? );';
-    params = [req.body.id, hash];
-    req.conn.query(cmd, params, function(err, result) {
-      if(err) {
-        console.error('Query Error: ', err);
-        next(createError(500));
-      } else {
-        req.session.user = {
-          id: req.body.id,
-          authorized: true,
-        };
-        res.status(200).send();
-      }
-    });
+    try {
+      var cmd = 'INSERT INTO user (id, pw) VALUES ( ? , ? );';
+      await req.conn.query(cmd, [req.body.id, hash]);
+      req.session.user = {
+        id: req.body.id,
+        authorized: true,
+      };
+      res.status(200).send();
+    } catch(err) {
+      console.error('Query Error: ', err);
+      next(createError(500));
+    }
   });
 });
 

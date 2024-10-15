@@ -1,4 +1,4 @@
-var mysql = require("mysql2");
+var mysql = require("mysql2/promise");
 const { connect } = require("../routes");
 var db_info = {
   host:process.env.DB_HOST,
