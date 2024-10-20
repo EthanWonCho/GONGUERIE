@@ -12,8 +12,8 @@ router.get('/', function(req, res, next) {
 router.post('/', async function(req, res, next) {
   try {
     var cmd = 'INSERT INTO announcements (title, author, written_date, view_count, contents) VALUES (?, ?, now(), 0, ?)';
-    await req.conn.query(cmd, [req.body.title, 'Unknown User', req.body.content]);
-    res.status(201).send({id: result.insertId});
+    const result = await req.conn.query(cmd, [req.body.title, 'Unknown User', req.body.content]);
+    res.status(201).send({id: result[0].insertId});
   } catch(err) {
     console.error('Query Error: ', err);
     next(createError(500));
