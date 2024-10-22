@@ -1,7 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
 var router = express.Router();
-
 const helper = require('../helper');
 const bcrypt = require('bcrypt');
 const dbMiddleware = require('../middlewares/dbMiddleware');

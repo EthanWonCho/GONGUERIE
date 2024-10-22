@@ -1,8 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
 var router = express.Router();
-// var db = require("../config/mysql");
-// var conn = db.init();
 const helper = require('../helper');
 const dbMiddleware = require('../middlewares/dbMiddleware');
 router.use(dbMiddleware);
