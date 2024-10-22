@@ -9,7 +9,7 @@
 ### Prerequisites / 필요한 프로그램
 
 ```
-NodeJS
+Node.js
 ```
 
 ### How to start the server / 서버를 시작하는 방법
