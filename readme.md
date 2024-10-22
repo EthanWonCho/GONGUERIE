@@ -31,6 +31,8 @@ DB_PASSWORD="Your DB Password"
 DB_DATABASE="Your DB Database"
 
 SESSION_SECRET="Your secret"
+
+OPENAI_API_KEY="Your OpenAI API Key"
 ```
 
 3. Start server
