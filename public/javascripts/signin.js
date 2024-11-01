@@ -16,5 +16,5 @@ async function register() {
   if(response.status == 200)
     window.location.href = "/";
   else 
-    alert("Malformed Request");
+    alert("Password Don't Match!");
 }

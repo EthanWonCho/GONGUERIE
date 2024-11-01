@@ -18,7 +18,7 @@ router.post('/', async function(req, res, next) {
       if (err) {
         // Handle error
         console.error('Error comparing passwords:', err);
-        next(createError(500));
+        res.status(500).send();
         return;
       }
       if (result) {
