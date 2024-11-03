@@ -7,7 +7,7 @@ router.use(dbMiddleware);
 
 router.get('/', async function(req, res, next) {
   try {
-    var cmd = "select * from announcements";
+    var cmd = "SELECT * FROM announcements ORDER BY n DESC LIMIT 0, 10;";
     const result = await req.conn.query(cmd);
     res.render('announcements', {res: result[0], helper: helper});
   } catch(err) {

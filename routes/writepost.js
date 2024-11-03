@@ -26,7 +26,7 @@ router.post('/', async function(req, res, next) {
     res.status(201).send({id: result[0].insertId});
   } catch(err) {
     console.error('Query Error: ', err);
-    next(createError(500));
+    createError(500);
   }
 });
 
