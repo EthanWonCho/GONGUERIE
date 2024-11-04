@@ -29,6 +29,7 @@
             <th scope="col">작성자</th>
             <th scope="col">등록일</th>
             <th scope="col">조회수</th>
+            <th scope="col">과목</th>
           </tr>
         </thead>
         <% res.forEach(data => { %>
@@ -48,6 +49,9 @@
             </td>
             <td>
               <%=data.view_count%>
+            </td>
+            <td>
+              <%=data.category%>
             </td>
           </tr>
         <% }); %>
